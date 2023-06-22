@@ -1,0 +1,7 @@
+**
+
+!core
+!todolist
+!pyproject.toml
+!poetry.lock
+!manage.py
