@@ -37,7 +37,7 @@ jobs:
           mkdir deploy
           mv docker-compose-ci.yaml deploy/docker-compose.yaml
           mv nginx.conf deploy/nginx.conf
-      - uses: appleboy/scp-actions:master
+      - uses: appleboy/scp-actions@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
