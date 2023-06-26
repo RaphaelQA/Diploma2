@@ -33,7 +33,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - run:
+      - run: |
             mkdir deploy
             mv docker-compose-ci.yaml deploy/docker-compose.yaml
             mv nginx.conf deploy/nginx.conf
