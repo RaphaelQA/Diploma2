@@ -37,7 +37,7 @@ jobs:
           mkdir deploy
           mv docker-compose-ci.yaml deploy/docker-compose.yaml
           mv nginx.conf deploy/nginx.conf
-      - uses: Diploma2/scp-actions@master
+      - uses: diploma2/scp-actions@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
