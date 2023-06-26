@@ -44,4 +44,4 @@ jobs:
 #          password: ${{ secrets.SSH_PASS }}
           source: "deploy/*"
           target: "todolist"
-          strip_componentes: 1
+          strip_components: 1
