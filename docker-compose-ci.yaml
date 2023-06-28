@@ -22,6 +22,8 @@ services:
       db:
         condition: service_healthy
     command: python manage.py migrate
+    volumes:
+      - django_static:/opt/app/static/
 
   collect_static:
     image: ${DOCKERHUB_USERNAME}/diploma2:latest
