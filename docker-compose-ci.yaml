@@ -43,7 +43,7 @@ services:
     image: sermalenk/skypro-front:lesson-34
     restart: on-failure
     ports:
-      - "9000:80"
+      - "80:80"
     depends_on:
       api:
         condition: service_started
