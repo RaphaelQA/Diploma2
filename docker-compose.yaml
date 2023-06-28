@@ -50,6 +50,8 @@ services:
     volumes:
       - ./core:/opt/app/core
       - ./todolist:/opt/app/todolist
+
+
   frontend:
     image: sermalenk/skypro-front:lesson-34
     restart: on-failure
