@@ -23,6 +23,13 @@ services:
         condition: service_healthy
     command: python manage.py migrate
 
+  collect_static:
+    image: ${DOCKERHUB_USERNAME}/diploma2:latest
+    env_file: .env
+    command: python manage.py collectstatic - c --no-input
+    volumes:
+      - django_static:/opt/app/static/
+
   api:
     image: ${DOCKERHUB_USERNAME}/diploma2:latest
     env_file: .env
@@ -31,13 +38,6 @@ services:
         condition: service_healthy
       run_migrations:
         condition: service_completed_successfully
-
-  collect_static:
-    image: ${DOCKERHUB_USERNAME}/diploma2:latest
-    env_file: .env
-    command: python manage.py collectstatic - c --no-input
-    volumes:
-      - django_static:/opt/app/static/
 
   frontend:
     image: sermalenk/skypro-front:lesson-34
