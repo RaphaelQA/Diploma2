@@ -30,7 +30,10 @@ services:
   collect_static:
     build: .
     env_file: .env
-    command: python manage.py collectstatic - c --no-input
+    command: python manage.py collectstatic -c --no-input
+    depends_on:
+      frontend:
+        condition: service_completed_successfully
     volumes:
       - django_static:/opt/app/static/
 

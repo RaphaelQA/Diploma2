@@ -28,7 +28,10 @@ services:
   collect_static:
     image: ${DOCKERHUB_USERNAME}/diploma2:latest
     env_file: .env
-    command: python manage.py collectstatic - c --no-input
+    command: python manage.py collectstatic -c --no-input
+    depends_on:
+      frontend:
+        condition: service_completed_successfully
     volumes:
       - django_static:/opt/app/static/
 
