@@ -29,9 +29,6 @@ services:
     image: ${DOCKERHUB_USERNAME}/diploma2:latest
     env_file: .env
     command: python manage.py collectstatic -c --no-input
-    depends_on:
-      frontend:
-        condition: service_completed_successfully
     volumes:
       - django_static:/opt/app/static/
 
@@ -52,6 +49,8 @@ services:
     depends_on:
       api:
         condition: service_started
+      collect_static:
+        condition: service_completed_successfully
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
       - django_static:/usr/share/nginx/html/static/
