@@ -21,7 +21,7 @@ class GoalCategory(BaseModel):
     def __str__(self):
         return self.title
 
-
+    objects = models.Manager()
 class Goal(BaseModel):
 
     class Status(models.IntegerChoices):
@@ -51,6 +51,8 @@ class Goal(BaseModel):
     def __str__(self):
         return self.title
 
+    objects = models.Manager()
+
 class GoalComment(BaseModel):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     goal = models.ForeignKey(Goal, on_delete=models.CASCADE)
@@ -63,4 +65,4 @@ class GoalComment(BaseModel):
     def __str__(self):
         return self.text
 
-
+    objects = models.Manager()
