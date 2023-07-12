@@ -52,6 +52,7 @@ services:
       - "8000:8000"
     volumes:
       - ./core:/opt/app/core
+      - ./goals:/opt/app/goals
       - ./todolist:/opt/app/todolist
 
   frontend:
