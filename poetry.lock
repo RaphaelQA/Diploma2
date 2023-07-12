@@ -315,6 +315,17 @@ files = [
 ]
 
 [[package]]
+name = "install"
+version = "1.3.5"
+description = "Install packages from within code"
+optional = false
+python-versions = ">=2.7, >=3.5"
+files = [
+    {file = "install-1.3.5-py3-none-any.whl", hash = "sha256:0d3fadf4aa62c95efe8d34757c8507eb46177f86c016c21c6551eafc6a53d5a9"},
+    {file = "install-1.3.5.tar.gz", hash = "sha256:e67c8a0be5ccf8cb4ffa17d090f3a61b6e820e6a7e21cd1d2c0f7bc59b18e647"},
+]
+
+[[package]]
 name = "markdown"
 version = "3.4.3"
 description = "Python implementation of John Gruber's Markdown."
@@ -624,4 +635,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "28096351e121d3a1d8db1f4c02df71eba77f905e06f77b379e77b834be067599"
+content-hash = "24a5323dc4258801af7f9682634e09734ebeb00945c133362c8c69c28be8c566"

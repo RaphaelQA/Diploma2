@@ -53,7 +53,6 @@ services:
     volumes:
       - ./core:/opt/app/core
       - ./todolist:/opt/app/todolist
-      - ./goals:/opt/goals
 
   frontend:
     image: sermalenk/skypro-front:lesson-34
