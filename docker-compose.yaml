@@ -56,7 +56,7 @@ services:
       - ./goals:/opt/app/goals
 
   frontend:
-    image: sermalenk/skypro-front:lesson-34
+    image: sermalenk/skypro-front:lesson-35
     restart: on-failure
     ports:
       - "80:80"
