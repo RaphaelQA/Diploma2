@@ -11,9 +11,9 @@ urlpatterns =[
 
     path('goal/create', CoalCreateView.as_view(), name='create_goal'),
     path('goal/list', GoalListView.as_view(), name='list_goals'),
-    path('goal<int:id>', GoalDetailView.as_view(), name='goal_details'),
+    path('goal/<int:id>', GoalDetailView.as_view(), name='goal_details'),
 
     path('goal_comment/create', CoalCommentCreateView.as_view(), name='create_comment'),
     path('goal_comment/list', GoalCommentListView.as_view(), name='list_comments'),
-    path('goal_comment<int:id>', GoalCommentDetailView.as_view(), name='comment_details'),
+    path('goal_comment/<int:id>', GoalCommentDetailView.as_view(), name='comment_details'),
 ]
