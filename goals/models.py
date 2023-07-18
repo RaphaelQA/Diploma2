@@ -39,8 +39,12 @@ class BoardParticipant(BaseModel):
         related_name="participants",
     )
     role = models.PositiveSmallIntegerField(
-        verbose_name="Роль", choices=Role.choices, default=Role.owner
+        verbose_name="Роль",
+        choices=Role.choices,
+        default=Role.owner,
     )
+
+    editable_role = Role.choices[1:]
 class GoalCategory(BaseModel):
     board = models.ForeignKey(
         Board, verbose_name="Доска", on_delete=models.PROTECT, related_name="categories"
