@@ -25,7 +25,6 @@ class GoalCategoryListView(generics.ListAPIView):
         ).exclude(is_deleted=True)
 
 
-
 class GoalCategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [GoalCategoryPermission]
     serializer_class = GoalCategoryWithUserSerializer

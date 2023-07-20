@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'social_django',
     'core',
     'goals',
+    'bot',
 ]
 
 MIDDLEWARE = [
@@ -189,3 +190,5 @@ LOGGING = {
         'level': 'WARNING',
     },
 }
+
+BOT_TOKEN = env.str('BOT_TOKEN')

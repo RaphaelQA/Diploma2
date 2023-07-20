@@ -22,6 +22,7 @@ from todolist import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('core/', include(('core.urls', 'core'))),
+    path('bot/', include('bot.urls', namespace='bot')),
     path('goals/', include(('goals.urls', 'goals'))),
     path('oauth/', include('social_django.urls', namespace='social'))
 ]

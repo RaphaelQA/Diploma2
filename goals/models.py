@@ -47,7 +47,7 @@ class BoardParticipant(BaseModel):
     editable_role = Role.choices[1:]
 class GoalCategory(BaseModel):
     board = models.ForeignKey(
-        Board, verbose_name="Доска", on_delete=models.PROTECT, related_name="categories"
+        Board, verbose_name="Доска", on_delete=models.PROTECT, related_name="categories",
     )
     title = models.CharField(max_length=255)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
