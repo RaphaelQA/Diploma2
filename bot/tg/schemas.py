@@ -6,18 +6,17 @@ class TgUser(BaseModel):
     username: str | None
 
 
-class Massage(BaseModel):
-    massage_id: int
+class Message(BaseModel):
+    message_id: int
     text: str | None
-    _from: TgUser = Field(alias='from')
+    msg_from: TgUser = Field(alias='from')
 
     model_config = ConfigDict(populate_by_name=True)
 
 
-
 class UpdateObj(BaseModel):
     update_id: int
-    massage: Massage
+    message: Message
 
 
 class GetUpdatesResponse(BaseModel):
@@ -25,6 +24,6 @@ class GetUpdatesResponse(BaseModel):
     result: list[UpdateObj]
 
 
-class SendMassageResponse(BaseModel):
+class SendMessageResponse(BaseModel):
     ok: bool
-    result: Massage
+    result: Message

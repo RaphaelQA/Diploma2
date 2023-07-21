@@ -4,7 +4,7 @@ from typing import Any, TypeVar, Type
 import requests
 from pydantic import BaseModel, ValidationError
 
-from bot.tg.schemas import GetUpdatesResponse, SendMassageResponse
+from bot.tg.schemas import GetUpdatesResponse, SendMessageResponse
 from django.conf import settings
 
 T = TypeVar('T', bound=BaseModel)
@@ -18,7 +18,7 @@ class TgClientException(Exception):
 
 
 class TgClient:
-    def __init__(self, token:str | None = None):
+    def __init__(self, token: str | None = None):
         self.__token = token if token else settings.BOT_TOKEN
         self.__url = f'https://api.telegram.org/bot{self.__token}/'
 
@@ -26,9 +26,9 @@ class TgClient:
         data = self._get('getUpdates', offset=offset, timeout=timeout)
         return self.__serialize_response(GetUpdatesResponse, data)
 
-    def send_message(self, chat_id: int, text: str) -> SendMassageResponse:
-        data = self._get('sendMassage', chat_id=chat_id, text=text)
-        return self.__serialize_response(SendMassageResponse, data)
+    def send_message(self, chat_id: int, text: str) -> SendMessageResponse:
+        data = self._get('sendMessage', chat_id=chat_id, text=text)
+        return self.__serialize_response(SendMessageResponse, data)
 
     def __get_url(self, method: str) -> str:
         return f'{self.__url}{method}'

@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from typing import Any
+
 from envparse import env
 
 
@@ -177,17 +179,37 @@ REST_FRAMEWORK = {
     ]
 
 }
-LOGGING = {
+LOGGING: dict[str, Any] = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'console': {
+            'format': '%(asctime)s - %(levelname)s - %(message)s',
+            'datefmt': '%Y-%m-%d %H:%M:%S',
+        },
+    },
     'handlers': {
         'console': {
             'class': 'logging.StreamHandler',
+            'formatter': 'console',
+        },
+        'null': {
+            'class': 'logging.NullHandler',
         },
     },
-    'root': {
-        'handlers': ['console'],
-        'level': 'WARNING',
+    'loggers': {
+        '': {
+            'level': 'DEBUG' if DEBUG else 'INFO',
+            'handlers': ['console'],
+        },
+        'django.server': {
+            'level': 'INFO',
+            'handlers': ['console'],
+        },
+        'urllib3': {
+            'handlers': ['null'],
+            'propagate': False,
+        },
     },
 }
 

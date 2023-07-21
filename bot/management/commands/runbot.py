@@ -2,7 +2,7 @@ from django.core.management import BaseCommand
 
 from bot.models import TgUser
 from bot.tg.client import TgClient
-from bot.tg.schemas import Massage
+from bot.tg.schemas import Message
 from goals.models import Goal
 
 
@@ -19,9 +19,9 @@ class Command(BaseCommand):
             res = self.tg_client.get_updates(offset=offset)
             for item in res.result:
                 offset = item.update_id + 1
-                self.handle_message(item.massage)
+                self.handle_message(item.message)
 
-    def handle_message(self, msg: Massage) -> None:
+    def handle_message(self, msg: Message) -> None:
         tg_user, _ = TgUser.objects.get_or_create(chat_id=msg.msg_from.id, defaults={'username': msg.msg_from.username})
         if not tg_user.is_verified:
             tg_user.update_verification_code()
@@ -29,7 +29,7 @@ class Command(BaseCommand):
         else:
             self.handle_auth_user(tg_user, msg)
 
-    def handle_auth_user(self, tg_user: TgUser, msg: Massage) -> None:
+    def handle_auth_user(self, tg_user: TgUser, msg: Message) -> None:
         if msg.text and msg.text.startswith('/'):
             match msg.text:
                 case '/goals':
