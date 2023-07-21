@@ -7,7 +7,7 @@ from core.models import User
 # Create your models here.
 
 class TgUser(models.Model):
-    chat_id = models.BooleanField(primary_key=True, editable=False, unique=True)
+    chat_id = models.BigIntegerField(primary_key=True, editable=False, unique=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     username = models.CharField(max_length=255, null=True, blank=True)
     verification_code = models.CharField(max_length=255, unique=True, null=True, blank=True)
@@ -15,11 +15,9 @@ class TgUser(models.Model):
     def __str__(self):
         return f'{self.__class__.__name__} ({self.chat_id})'
 
-
     @staticmethod
     def _generate_verification_code() -> str:
         return get_random_string(20)
-
 
     def update_verification_code(self) -> None:
         self.verification_code = self._generate_verification_code()

@@ -15,7 +15,7 @@ class TgUserSerializer(serializers.ModelSerializer):
 
     def validated_verification_code(self, code: str) -> str:
         try:
-            self.instance = TgUser.objects.ger(verification_code=code)
+            TgUser.objects.ger(verification_code=code)
         except TgUser.DoesNotExist:
             raise exceptions.ValidationError('Invalid verification_code')
         return code
