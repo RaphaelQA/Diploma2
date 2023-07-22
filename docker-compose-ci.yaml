@@ -56,7 +56,7 @@ services:
       - django_static:/usr/share/nginx/html/static/
 
   bot:
-    image: zidolch/homework_38:latest
+    image: ${DOCKERHUB_USERNAME}/diploma2:latest
     restart: on-failure
     env_file:
       - .env
